@@ -1,14 +1,15 @@
 
 import datetime as dt
+
 import numpy as np
 import pandas as pd
 import sqlalchemy
+from flask import Flask, jsonify
+from sqlalchemy import create_engine, func
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from flask import Flask, jsonify
 
-engine = create_engine("sqlite:///Hawaii.sqlite")
+engine = create_engine("sqlite:///Hawaii.sqlite",connect_args={'check_same_thread': False})
 # reflect the database into a new model
 Base = automap_base()
 # reflect the tables
